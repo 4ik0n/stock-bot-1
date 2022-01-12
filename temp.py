@@ -41,7 +41,7 @@ while 1 == 1:
         
         lasts[el] = sk - sd
         lastm[el] = mm - ms
-    print('1step')
+    print(ans)
     time.sleep(1800)
     
 
