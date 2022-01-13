@@ -35,7 +35,7 @@ while 1 == 1:
             #request to buy
         if (sk - sd <= 0) and order[el] == 'sell':
             order[el] = 'buy'
-            ans[el] += (buy[el] - close) / close * 100
+            ans[el] += (close - buy) / buy * 100
             print(el, 'sell', close)
             #request to sell
         
