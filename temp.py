@@ -1,10 +1,10 @@
 from tradingview_ta import TA_Handler, Interval, Exchange
 import time
 
-spis = ['IRAO', 'VTBR', 'SBER', 'GAZP', 'RUAL', 'DSKY', 'MTSS', 'FIVE', 'MVID']
-lasts = {'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1}
-lastm = {'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1}
-order = {'IRAO' : 'buy', 'VTBR' : 'buy', 'SBER' : 'buy', 'GAZP' : 'buy', 'RUAL' : 'buy', 'DSKY' : 'buy', 'MTSS' : 'buy', 'FIVE' : 'buy', 'MVID' : 'buy'}
+spis = ['IRAO', 'VTBR', 'SBER', 'GAZP', 'RUAL', 'DSKY', 'MTSS', 'FIVE', 'MVID', 'TATN', 'CHMF', 'ALRS', 'SGZH']
+lasts = {'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1, 'TATN' : -1, 'CHMF' : -1, 'ALRS' : -1, 'SGZH' : -1}
+lastm = {'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1, 'TATN' : -1, 'CHMF' : -1, 'ALRS' : -1, 'SGZH' : -1}
+order = {'IRAO' : 'buy', 'VTBR' : 'buy', 'SBER' : 'buy', 'GAZP' : 'buy', 'RUAL' : 'buy', 'DSKY' : 'buy', 'MTSS' : 'buy', 'FIVE' : 'buy', 'MVID' : 'buy', 'MVID' : 'buy', 'TATN' : 'buy', 'CHMF' : 'buy', 'ALRS' : 'buy', 'SGZH' : 'buy'}
 buy = {'IRAO' : 0, 'VTBR' : 0, 'SBER' : 0, 'GAZP' : 0, 'RUAL' : 0, 'DSKY' : 0, 'MTSS' : 0, 'FIVE' : 0, 'MVID' : 0}
 ans = {'IRAO' : 0, 'VTBR' : 0, 'SBER' : 0, 'GAZP' : 0, 'RUAL' : 0, 'DSKY' : 0, 'MTSS' : 0, 'FIVE' : 0, 'MVID' : 0}
 while 1 == 1:
