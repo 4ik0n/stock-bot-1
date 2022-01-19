@@ -7,7 +7,7 @@ import schedule
 #client = tinvest.SyncClient(TOKEN)
 
 
-spis = {'T-RM', 'F-RM', 'M-RM', 'SWN-RM', 'IRAO', 'VTBR', 'SBER', 'GAZP', 'RUAL', 'DSKY', 'MTSS', 'FIVE', 'MVID', 'TATN', 'CHMF', 'ALRS', 'SGZH', 'T-RM'}
+spis = {'IRAO', 'VTBR', 'SBER', 'GAZP', 'RUAL', 'DSKY', 'MTSS', 'FIVE', 'MVID', 'TATN', 'CHMF', 'ALRS', 'SGZH'}
 lasts = {'T-RM' : -1, 'F-RM' : -1, 'M-RM' : -1, 'SWN-RM' : -1, 'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1, 'TATN' : -1, 'CHMF' : -1, 'ALRS' : -1, 'SGZH' : -1}
 lastm = {'T-RM' : -1, 'F-RM' : -1, 'M-RM' : -1, 'SWN-RM' : -1, 'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1, 'TATN' : -1, 'CHMF' : -1, 'ALRS' : -1, 'SGZH' : -1}
 order = {'T-RM' : 'buy', 'F-RM' : 'buy', 'M-RM' : 'buy', 'SWN-RM' : 'buy', 'IRAO' : 'buy', 'VTBR' : 'buy', 'SBER' : 'buy', 'GAZP' : 'buy', 'RUAL' : 'buy', 'DSKY' : 'buy', 'MTSS' : 'buy', 'FIVE' : 'buy', 'MVID' : 'buy', 'MVID' : 'buy', 'TATN' : 'buy', 'CHMF' : 'buy', 'ALRS' : 'buy', 'SGZH' : 'buy'}
