@@ -61,9 +61,9 @@ def fun():
         
         lasts[el] = sk - sd
         lastm[el] = mm - ms
-        with open('d.txt', 'w') as f:
-            for i in spis:
-                f.write(i + ' ' + str(lasts[i]) + ' ' + str(lastm[i]) + '  ' + order[i] + '  ' + str(buy[i]) + '  ' + str(ans[i]) + '  ' + '\n')
+    with open('d.txt', 'w') as f:
+        for i in spis:
+            f.write(i + ' ' + str(lasts[i]) + ' ' + str(lastm[i]) + '  ' + order[i] + '  ' + str(buy[i]) + '  ' + str(ans[i]) + '  ' + '\n')
     print(ans)
     
 schedule.every().hour.at(":14").do(fun)
