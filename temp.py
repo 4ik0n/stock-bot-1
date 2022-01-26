@@ -36,24 +36,25 @@ def fun():
         )
         
         analysis = ticker.get_analysis()
-        rsi = analysis.indicators["RSI"]
         mm = analysis.indicators["MACD.macd"]
         ms = analysis.indicators["MACD.signal"]
         sk = analysis.indicators["Stoch.K"]
         sd = analysis.indicators["Stoch.D"]
         close = analysis.indicators["close"]
         
-        if (sk - sd > 0 and lasts[el] < 0) and (mm - ms > 0) and order[el] == 'buy':
+        s = sk - sd
+        m = mm - ms
+        if (s > 0 and lasts[el] < 0) and (m > 0) and order[el] == 'buy':
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
             #request to buy
-        if (mm - ms > 0 and lastm[el] < 0) and (sk - sd > 0) and order[el] == 'buy':
+        if (m > 0 and lastm[el] < 0) and (s > 0) and order[el] == 'buy':
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
             #request to buy
-        if (sk - sd <= 0) and order[el] == 'sell':
+        if (s <= 0) and order[el] == 'sell':
             order[el] = 'buy'
             ans[el] += (close - buy[el]) / buy[el] * 100
             print(el, 'sell', close)
