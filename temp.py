@@ -26,7 +26,7 @@ ind = {'T-RM' : 0, 'F-RM' : 1, 'M-RM' : 2, 'SWN-RM' : 3, 'IRAO' : 4, 'VTBR' : 5,
 '''
 
 def fun():
-    time.sleep(50)
+    time.sleep(54)
     for el in spis:
         ticker = TA_Handler(
             symbol=el,
