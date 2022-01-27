@@ -56,8 +56,9 @@ def fun():
             #request to buy
         if (s <= 0) and order[el] == 'sell':
             order[el] = 'buy'
-            ans[el] += (close - buy[el]) / buy[el] * 100
-            print(el, 'sell', close)
+            if buy[el] != 0:
+                ans[el] += (close - buy[el]) / buy[el] * 100
+                print(el, 'sell', close)
             #request to sell
         
         lasts[el] = sk - sd
