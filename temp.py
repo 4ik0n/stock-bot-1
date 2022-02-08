@@ -1,7 +1,6 @@
 from tradingview_ta import TA_Handler, Interval, Exchange
 from datetime import datetime
 import time
-import schedule
 import tinvest
 TOKEN = "t.WVpg6thNk00O9Vd8P4vrne6om7zDgWaGIsKH6TqdRKgT2giER_3Lqp7w9DI7NYdjPWF4AXkj6MRNP5G51zp2lQ"
 S_TOKEN = "t.gJWIDbsjDOGnbAl2y-pm5kzEIxljV-kWYb1To6Skr4STriOvfDp4q4xwvFzuLzaXxWZt2UzRXysejROedAS1TQ"
@@ -51,7 +50,7 @@ def fun():
             
             #request to buy
             try:
-                order(el, 1, 'Buy', close)
+                comm(el, 1, 'Buy', close)
             except:
                 random_el = 1
             
@@ -62,7 +61,7 @@ def fun():
             
             #request to buy
             try:
-                order(el, 1, 'Buy', close)
+                comm(el, 1, 'Buy', close)
             except:
                 random_el = 1
             
@@ -74,7 +73,7 @@ def fun():
                 
             #request to sell
             try:
-                order(el, 1, 'Sell', close)
+                comm(el, 1, 'Sell', close)
             except:
                 random_el = 1
         
@@ -85,20 +84,27 @@ def fun():
             f.write(i + ' ' + str(lasts[i]) + ' ' + str(lastm[i]) + '  ' + order[i] + '  ' + str(buy[i]) + '  ' + str(ans[i]) + '  ' + '\n')
     print(ans)
    
-def order(el, lots, operation, pr):
+def comm(el, lots, operation, pr):
     instr = client.get_market_search_by_ticker(el)
     fg = instr.payload.instruments[0].figi
     request = tinvest.LimitOrderRequest(lots=lots, operation=operation, price=pr)
-    resp = client.post_orders_limit_order(fg, request)
+    try:
+        resp = client.post_orders_limit_order(fg, request)
+    except:
+        random_el = 1
     
-schedule.every().hour.at(":14").do(fun)
-schedule.every().hour.at(":29").do(fun)
-schedule.every().hour.at(":44").do(fun)
-schedule.every().hour.at(":59").do(fun)
+
 
 
     
 while True:
-    schedule.run_pending()
+    n = datetime.now().minute
+    if n == 14:
+        fun()
+    if n == 29:
+        fun()
+    if n ==44:
+        fun()
+    if n == 59:
+        fun()
     time.sleep(1)
-
