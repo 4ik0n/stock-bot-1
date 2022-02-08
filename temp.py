@@ -2,10 +2,10 @@ from tradingview_ta import TA_Handler, Interval, Exchange
 from datetime import datetime
 import time
 import schedule
-
-#import tinvest 
-#TOKEN = ''
-#client = tinvest.SyncClient(TOKEN)
+import tinvest
+TOKEN = "t.WVpg6thNk00O9Vd8P4vrne6om7zDgWaGIsKH6TqdRKgT2giER_3Lqp7w9DI7NYdjPWF4AXkj6MRNP5G51zp2lQ"
+S_TOKEN = "t.gJWIDbsjDOGnbAl2y-pm5kzEIxljV-kWYb1To6Skr4STriOvfDp4q4xwvFzuLzaXxWZt2UzRXysejROedAS1TQ"
+client = tinvest.SyncClient(TOKEN)
 
 spis = {'IRAO', 'VTBR', 'SBER', 'GAZP', 'RUAL', 'DSKY', 'MTSS', 'FIVE', 'MVID', 'TATN', 'CHMF', 'ALRS', 'SGZH'}
 lasts = {'T-RM' : -1, 'F-RM' : -1, 'M-RM' : -1, 'SWN-RM' : -1, 'IRAO' : -1, 'VTBR' : -1, 'SBER' : -1, 'GAZP' : -1, 'RUAL' : -1, 'DSKY' : -1, 'MTSS' : -1, 'FIVE' : -1, 'MVID' : -1, 'TATN' : -1, 'CHMF' : -1, 'ALRS' : -1, 'SGZH' : -1}
@@ -48,18 +48,35 @@ def fun():
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
+            
             #request to buy
+            try:
+                order(el, 1, 'Buy', close)
+            except:
+                random_el = 1
+            
         if (m > 0 and lastm[el] < 0) and (s > 0) and order[el] == 'buy':
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
+            
             #request to buy
+            try:
+                order(el, 1, 'Buy', close)
+            except:
+                random_el = 1
+            
         if (s <= 0) and order[el] == 'sell':
             order[el] = 'buy'
             if buy[el] != 0:
                 ans[el] += (close - buy[el]) / buy[el] * 100
                 print(el, 'sell', close)
+                
             #request to sell
+            try:
+                order(el, 1, 'Sell', close)
+            except:
+                random_el = 1
         
         lasts[el] = sk - sd
         lastm[el] = mm - ms
@@ -67,12 +84,20 @@ def fun():
         for i in spis:
             f.write(i + ' ' + str(lasts[i]) + ' ' + str(lastm[i]) + '  ' + order[i] + '  ' + str(buy[i]) + '  ' + str(ans[i]) + '  ' + '\n')
     print(ans)
+   
+def order(el, lots, operation, pr):
+    instr = client.get_market_search_by_ticker(el)
+    fg = instr.payload.instruments[0].figi
+    request = tinvest.LimitOrderRequest(lots=lots, operation=operation, price=pr)
+    resp = client.post_orders_limit_order(fg, request)
     
 schedule.every().hour.at(":14").do(fun)
 schedule.every().hour.at(":29").do(fun)
 schedule.every().hour.at(":44").do(fun)
 schedule.every().hour.at(":59").do(fun)
 
+
+    
 while True:
     schedule.run_pending()
     time.sleep(1)
