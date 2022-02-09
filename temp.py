@@ -43,7 +43,7 @@ def fun():
         
         s = sk - sd
         m = mm - ms
-        if (s > 0 and lasts[el] < 0) and (m > 0) and order[el] == 'buy':
+        if (s > 0 and lasts[el] < 0) and (m > 0) and (order[el] == 'buy') and (sk < 80):
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
@@ -54,7 +54,7 @@ def fun():
             except:
                 random_el = 1
             
-        if (m > 0 and lastm[el] < 0) and (s > 0) and order[el] == 'buy':
+        if (m > 0 and lastm[el] < 0) and (s > 0) and (order[el] == 'buy') and (sk < 80):
             order[el] = 'sell'
             buy[el] = close
             print(el, 'buy', close)
